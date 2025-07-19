@@ -1,41 +1,90 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>方块纪元工作室</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header class="header">
+  <header class="site-header">
     <div class="container">
-      <img src="logo.png" alt="logo" class="logo" />
-      <nav class="nav">
-        <a href="#">首页</a>
-        <a href="#">模组</a>
-        <a href="#">文档</a>
-        <a href="#">关于我们</a>
+      <h1>方块纪元工作室</h1>
+      <nav>
+        <a href="#about">关于我们</a>
+        <a href="#mods">特色模组</a>
+        <a href="#team">团队故事</a>
+        <a href="#feedback">用户评价</a>
+        <a href="#contact">联系我们</a>
       </nav>
     </div>
   </header>
-  <main class="hero">
-    <div class="container">
-      <h1>方块纪元工作室</h1>
-      <p>开源 · 创意 · 模组</p>
-    </div>
+
+  <main class="container">
+    <section id="about" class="card">
+      <h2>关于方块纪元</h2>
+      <p>
+        方块纪元工作室致力于创造精致、有深度的 Minecraft 模组内容。我们专注于将传统玩法注入新的灵魂，打造完全原创机制与丰富故事背景，为玩家带来沉浸式体验。
+      </p>
+    </section>
+
+    <section id="mods" class="card">
+      <h2>特色模组</h2>
+      <ul class="mod-list">
+        <li><strong>⚙️ 天光引擎：</strong>全新光照与生物互动机制。</li>
+        <li><strong>🧭 边境探索：</strong>动态地图、隐藏维度、探险事件系统。</li>
+        <li><strong>📜 史诗传承：</strong>自定义剧情线与可成长 NPC。</li>
+        <li><strong>🔒 AQAuth：</strong>邮箱验证系统，为多人游戏安全护航。</li>
+      </ul>
+    </section>
+
+    <section id="team" class="card">
+      <h2>团队故事</h2>
+      <p>
+        方块纪元成立于 2023 年，由一群热爱 Minecraft 和编程的开发者组成。我们来自世界各地，因共同的热情相遇，致力于打造一个高度开放且秉承原创精神的模组生态。
+      </p>
+      <p>
+        我们的核心成员包括项目策划者、Java 工程师、美术设计师与社区运营人员，正在不断扩展与进化中。
+      </p>
+    </section>
+
+    <section id="feedback" class="card">
+      <h2>玩家评价</h2>
+      <div class="danmaku-container" id="danmaku"></div>
+    </section>
   </main>
-  <section class="cards">
+
+  <footer class="site-footer">
     <div class="container">
-      <div class="card"><h3>高质量原创内容</h3><p>我们专注于Minecraft模组的深度开发，所有项目均为自主设计与实现，注重玩法与创意并重，力求为玩家带来独特且可持续的游戏体验。</p></div>
-      <div class="card"><h3>开源与透明</h3><p>所有模组项目全部开源，文档完备，代码规范，欢迎开发者学习、贡献与协作，推动Minecraft中文模组生态向前发展。</p></div>
-      <div class="card"><h3>团队协作高效</h3><p>成员来自MC百科与多个成熟模组团队，具备丰富经验与扎实功底，能高效完成从构想到上线的全流程开发与优化。</p></div>
-    </div>
-  </section>
-  <footer class="footer">
-    <div class="container">
-      <p>© 2025 方块纪元工作室</p>
+      <p>&copy; 2025 方块纪元工作室 · BlockAge Studio</p>
+      <p>联系邮箱：blockage@studio.com ｜ QQ群：123456789</p>
     </div>
   </footer>
+
+  <script>
+    const danmakuContainer = document.getElementById('danmaku');
+    const comments = [
+      "这是我玩过最独特的模组之一，充满创意与细节！ —— 玩家 SkyMiao",
+      "感谢 AQAuth，让我的服务器终于可以安心开服。 —— 服主 littleFire",
+      "剧情做得真的太棒了，沉浸感拉满！ —— 玩家 沉默的鲨鱼",
+      "地图探索机制超棒，能玩一整天不腻！ —— 玩家 方块猎人",
+      "美术风格一绝，真的像官方出的模组！ —— 玩家 逐光者"
+    ];
+    function createDanmaku(text) {
+      const span = document.createElement("span");
+      span.className = "danmaku";
+      span.innerText = text;
+      span.style.top = Math.random() * 120 + "px";
+      span.style.animationDuration = (10 + Math.random() * 10) + "s";
+      danmakuContainer.appendChild(span);
+      setTimeout(() => {
+        danmakuContainer.removeChild(span);
+      }, 20000);
+    }
+    setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * comments.length);
+      createDanmaku(comments[randomIndex]);
+    }, 2000);
+  </script>
 </body>
 </html>
